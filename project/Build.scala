@@ -25,6 +25,9 @@ object ScalaFramework extends Build {
   ).settings(
     name := "scala-framework",
     libraryDependencies ++= Seq(
+      "org.slf4j" % "slf4j-api" % "1.7.5",
+      "ch.qos.logback" % "logback-classic" % "1.0.13",
+      "com.typesafe" %% "scalalogging-slf4j" % "1.0.1",
       "commons-io" % "commons-io" % "2.4",
       "commons-httpclient" % "commons-httpclient" % "3.1",
       "mysql" % "mysql-connector-java" % "5.1.+",
