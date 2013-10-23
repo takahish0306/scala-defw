@@ -36,7 +36,7 @@ trait Output extends Logger {
         None
       }
       case e: Exception => {
-        logger.error(exceptionMessage + " Unknown.")
+        logger.error(exceptionMessage + " Unknown. " + e.getMessage)
         None
       }
     }
