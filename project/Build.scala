@@ -5,7 +5,7 @@ import AssemblyKeys._
 
 object ScalaFramework extends Build { 
   val baseSettings = Seq(
-    version := "0.1.0",
+    version := "0.2.0",
     organization := "com.github.takahish0306.framework",
     crossScalaVersions := Seq("2.10.2"),
     libraryDependencies ++= Seq(
