@@ -39,7 +39,8 @@ trait Driver extends Logger {
         None
       }
       case e: Exception => {
-        logger.error(exceptionMessage + " Unknown. " + e.getMessage)
+        logger.error(exceptionMessage + " Unknown.")
+        logger.error(e.getMessage)
         None
       }
     } finally {
