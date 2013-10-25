@@ -4,9 +4,9 @@ import org.scalatest._
 import java.io._
 
 class InputTest extends FlatSpec with Input {
-  "Input.withInputStream" should "input from src/test/resources/com/github/takahish0306/framework/io/input.txt" in {
+  "Input.withFileInputStream" should "input from src/test/resources/com/github/takahish0306/framework/io/input.txt" in {
     val filepath = "src/test/resources/com/github/takahish0306/framework/io/input.txt"
-    val result = withInputStream[String](filepath){
+    val result = withFileInputStream[String](filepath){
       stream => {
         val bufferedReader = new BufferedReader(new InputStreamReader(stream))
         bufferedReader.readLine
@@ -19,9 +19,9 @@ class InputTest extends FlatSpec with Input {
   }
 
   // Error log output
-  "Input.withInputStream" should "throw exception /test/dummy.txt" in {
+  "Input.withFileInputStream" should "throw exception /test/dummy.txt" in {
     val filepath = "/test/dummy.txt"
-    val result = withInputStream[String](filepath){
+    val result = withFileInputStream[String](filepath){
         stream => "Not to evaluete."
     } match {
       case Some(v) => v

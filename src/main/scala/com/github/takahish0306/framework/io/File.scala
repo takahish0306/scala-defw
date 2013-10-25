@@ -2,6 +2,9 @@
  *
  * @author takahish0306
  *
+ * This code is open source software licensed under the Apache Software License.
+ * For more details, see LICENSE
+ *
  */
 
 package com.github.takahish0306.framework.io
@@ -12,7 +15,7 @@ import org.apache.commons.io.FilenameUtils
 object File {
 
   /**
-   * apply
+   * Apply
    *
    * @param filepath String
    * @return java.io.File
@@ -22,7 +25,7 @@ object File {
   }
 
   /**
-   * unapply
+   * Unapply
    *
    * @param fileObject java.io.File
    * @return Option[String]

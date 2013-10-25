@@ -9,7 +9,7 @@
 
 package com.github.takahish0306.framework.io
 
-import java.io.{FileOutputStream, IOException}
+import java.io.{File => FileObject, FileOutputStream, IOException}
 import org.apache.commons.io.{IOUtils, FileUtils}
 import com.github.takahish0306.framework.log.Logger
 
@@ -18,15 +18,15 @@ trait Output extends Logger {
   /**
    * To use output stream
    *
-   * @param filepath String
+   * @param fileobject FileObject
    * @param operation FileOutputStream => T
    * @return Option[T]
    */
-  def withOutputStream[T](filepath: String)(operation: FileOutputStream => T): Option[T] = {
+  def withFileOutputStream[T](fileobject: FileObject)(operation: FileOutputStream => T): Option[T] = {
     var stream: FileOutputStream = null
-    val exceptionMessage = "! Output.withOutputStream failed."
+    val exceptionMessage = "! Output.withFileOutputStream failed."
     try{
-      stream = FileUtils.openOutputStream(File(filepath))
+      stream = FileUtils.openOutputStream(fileobject)
       Some(operation(stream))
     } catch {
       case e: IOException => {
@@ -44,4 +44,16 @@ trait Output extends Logger {
       IOUtils.closeQuietly(stream)
     }
   }
+
+  /**
+   * To use output stream (overload)
+   *
+   * @param filepath String
+   * @param operation FileOutputStream => T
+   * @return Option[T]
+   */
+  def withFileOutputStream[T](filepath: String)(operation: FileOutputStream => T): Option[T] = {
+    withFileOutputStream[T](File(filepath))(operation)
+  }
+
 }
