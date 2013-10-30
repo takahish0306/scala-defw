@@ -90,14 +90,14 @@ trait Client extends Logger {
   }
 
   /**
-   * To use HTTP/GET response (overload)
+   * To use HTTP/GET response
    *
    * @param uri Strng
    * @param operation CloseableHttpResponse => T
    * @return Option[T]
    */
   def withHttpGetResponse[T](uri: String)(operation: CloseableHttpResponse => T): Option[T] = {
-    withHttpResponse[T](new HttpGet(URI(uri)))(operation)
+    withHttpGetResponse(URI(uri))(operation)
   }
 
 }
