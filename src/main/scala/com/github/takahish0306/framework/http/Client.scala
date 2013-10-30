@@ -33,8 +33,7 @@ trait Client extends Logger {
       Some(operation(client))
     } catch {
       case e: Exception => {
-        logger.error(exceptionMessage)
-        logger.error("StackTrace:\n" + e.getStackTrace.mkString("\n"))
+        logger.error(exceptionMessage + " A problem occurred.")
         None
       }
     } finally {
@@ -69,6 +68,7 @@ trait Client extends Logger {
           }
           case e: Exception => {
             logger.error(exceptionMessage + " Unknown.")
+            logger.error("StackTrace:\n" + e.getStackTrace.mkString("\n"))
             throw e
           }
 	} finally {
