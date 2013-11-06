@@ -11,9 +11,15 @@ package com.github.takahish0306.framework.http
 
 import java.io.IOException
 import java.net.{URI => JavaNetURI}
+import java.util.ArrayList
+
+import org.apache.http.NameValuePair
 import org.apache.http.client.ClientProtocolException
-import org.apache.http.client.methods.{HttpRequestBase, HttpGet, CloseableHttpResponse}
+import org.apache.http.client.methods.{HttpRequestBase, HttpGet, HttpPost, CloseableHttpResponse}
+import org.apache.http.client.entity.UrlEncodedFormEntity
+import org.apache.http.message.BasicNameValuePair
 import org.apache.http.impl.client.{HttpClients, CloseableHttpClient}
+
 import com.github.takahish0306.framework.log.Logger
 
 trait Client extends Logger {
@@ -92,12 +98,46 @@ trait Client extends Logger {
   /**
    * To use HTTP/GET response
    *
-   * @param uri Strng
+   * @param uri String
    * @param operation CloseableHttpResponse => T
    * @return Option[T]
    */
   def withHttpGetResponse[T](uri: String)(operation: CloseableHttpResponse => T): Option[T] = {
     withHttpGetResponse(URI(uri))(operation)
+  }
+
+  /**
+   * To use HTTP/POST response
+   *
+   * @param uri JavaNetURI
+   * @param params Map[String, String]
+   * @param operation CloseableHttpResponse => T
+   * @return Option[T]
+   */
+  def withHttpPostResponse[T](uri: JavaNetURI, params: Map[String, String])(operation: CloseableHttpResponse => T): Option[T] = {
+    // to convert into List[BasicNameValuePair]
+    val list  = for ((name, value) <- params) yield new BasicNameValuePair(name, value)
+
+    // to convert into ArrayList[NameValuePair]
+    val pairs = list.foldLeft(new ArrayList[NameValuePair])((pairs, pair) => { pairs.add(pair); pairs })
+
+    // to set Entity
+    val httppost = new HttpPost(uri)
+    httppost.setEntity(new UrlEncodedFormEntity(pairs))
+
+    withHttpResponse[T](httppost)(operation)
+  }
+
+  /**
+   * To use HTTP/POST response
+   *
+   * @param uri String
+   * @param params Map[String, String]
+   * @param operation CloseableHttpResponse => T
+   * @return Option[T]
+   */
+  def withHttpPostResponse[T](uri: String, params: Map[String, String])(operation: CloseableHttpResponse => T): Option[T] = {
+    withHttpPostResponse[T](URI(uri), params)(operation)
   }
 
 }
