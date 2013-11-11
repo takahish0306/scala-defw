@@ -9,7 +9,7 @@
 
 package com.github.takahish0306.framework.io
 
-import java.io.{File => FileObject}
+import java.io.{File => JavaIoFile}
 import org.apache.commons.io.FilenameUtils
 
 object File {
@@ -20,8 +20,8 @@ object File {
    * @param filepath String
    * @return java.io.File
    */
-  def apply(filepath: String): FileObject = {
-    new FileObject(FilenameUtils.normalize(filepath))
+  def apply(filepath: String): JavaIoFile = {
+    new JavaIoFile(FilenameUtils.normalize(filepath))
   }
 
   /**
@@ -30,7 +30,7 @@ object File {
    * @param fileObject java.io.File
    * @return Option[String]
    */
-  def unapply(fileObject: FileObject): Option[String] = {
+  def unapply(fileObject: JavaIoFile): Option[String] = {
     Some(fileObject.getAbsolutePath)
   }
 
