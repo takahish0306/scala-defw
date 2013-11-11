@@ -9,7 +9,7 @@
 
 package com.github.takahish0306.framework.io
 
-import java.io.{File => FileObject, FileOutputStream, IOException}
+import java.io.{File => JavaIoFile, FileOutputStream, IOException}
 import org.apache.commons.io.{IOUtils, FileUtils}
 import com.github.takahish0306.framework.log.Logger
 
@@ -18,11 +18,11 @@ trait Output extends Logger {
   /**
    * To use output stream
    *
-   * @param fileobject FileObject
+   * @param fileobject JavaIoFile
    * @param operation FileOutputStream => T
    * @return Option[T]
    */
-  def withFileOutputStream[T](fileobject: FileObject)(operation: FileOutputStream => T): Option[T] = {
+  def withFileOutputStream[T](fileobject: JavaIoFile)(operation: FileOutputStream => T): Option[T] = {
     var stream: FileOutputStream = null
     val exceptionMessage = "! Output.withFileOutputStream failed."
     try{
@@ -37,7 +37,7 @@ trait Output extends Logger {
       }
       case e: Exception => {
         logger.error(exceptionMessage + " Unknown.")
-        logger.error(e.getMessage)
+        logger.error("StackTrace:\n" + e.getStackTrace.mkString("\n"))
         None
       }
     } finally {
