@@ -40,7 +40,7 @@ trait Driver extends Logger {
       }
       case e: Exception => {
         logger.error(exceptionMessage + " Unknown.")
-        logger.error(e.getMessage)
+        logger.error("StackTrace:\n" + e.getStackTrace.mkString("\n"))
         None
       }
     } finally {
