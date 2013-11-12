@@ -4,8 +4,8 @@ import org.scalatest._
 import java.io._
 import org.apache.http.client.methods.HttpGet
 
-class ClientTest extends FlatSpec with Client {
-  "Client.withHttpGetResponse" should "request for http://hc.apache.org/ by HTTP/GET" in {
+class ResponseTest extends FlatSpec with Response {
+  "Response.withHttpGetResponse" should "request to http://hc.apache.org/ in HTTP/GET" in {
     withHttpGetResponse[Unit]("http://hc.apache.org/") {
       response => {
         val entity = response.getEntity()
@@ -26,7 +26,7 @@ class ClientTest extends FlatSpec with Client {
     }
   }
 
-  "Client.withHttpPostResponse" should "request for http://hc.apache.org/ by HTTP/POST" in {
+  "Response.withHttpPostResponse" should "request to http://hc.apache.org/ in HTTP/POST" in {
     withHttpPostResponse[Unit]("http://hc.apache.org/", Map[String, String]()) {
       response => {
         val entity = response.getEntity()
