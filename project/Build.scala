@@ -13,7 +13,7 @@ object ScalaFramework extends Build {
       "org.scalatest" %% "scalatest" % "1.9.1" % "test",
       "org.scala-tools.testing" %% "specs" % "1.6.9" % "test" withSources()
     ),
-    scalacOptions ++= Seq("-encoding", "utf8")
+    scalacOptions ++= Seq("-encoding", "utf8", "-unchecked", "-deprecation")
   )
 
   lazy val scalaFramework = Project(
@@ -29,7 +29,8 @@ object ScalaFramework extends Build {
       "ch.qos.logback" % "logback-classic" % "1.0.13",
       "com.typesafe" %% "scalalogging-slf4j" % "1.0.1",
       "commons-io" % "commons-io" % "2.4",
-      "commons-httpclient" % "commons-httpclient" % "3.1",
+      "org.apache.httpcomponents" % "httpclient" % "4.3.1",
+      "org.apache.httpcomponents" % "httpclient-cache" % "4.3.1",
       "postgresql" % "postgresql" % "9.1-901.jdbc4",
       "redis.clients" % "jedis" % "2.1.0",
       "com.twitter" % "util-eval_2.10" % "6.5.0"
