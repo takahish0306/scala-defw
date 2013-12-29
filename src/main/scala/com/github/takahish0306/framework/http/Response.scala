@@ -17,7 +17,6 @@ import org.apache.http.NameValuePair
 import org.apache.http.client.ClientProtocolException
 import org.apache.http.client.methods.{HttpRequestBase, HttpGet, HttpPost, CloseableHttpResponse}
 import org.apache.http.client.entity.UrlEncodedFormEntity
-import org.apache.http.message.BasicNameValuePair
 import org.apache.http.impl.client.{HttpClients, CloseableHttpClient}
 
 import com.github.takahish0306.framework.log.Logger
@@ -64,33 +63,26 @@ trait Response extends Client with Logger {
   /**
    * To use HTTP/GET response
    *
-   * @param uri String
+   * @param uri JavaNetURI
    * @param operation CloseableHttpResponse => T
    * @return Option[T]
    */
-  def withHttpGetResponse[T](uri: String)(operation: CloseableHttpResponse => T): Option[T] = {
-    withHttpResponse[T](new HttpGet(URI(uri)))(operation)
+  def withHttpGetResponse[T](uri: JavaNetURI)(operation: CloseableHttpResponse => T): Option[T] = {
+    withHttpResponse[T](new HttpGet(uri))(operation)
   }
 
   /**
    * To use HTTP/POST response
    *
-   * @param uri String
-   * @param params Map[String, String]
+   * @param uri JavaNetURI
+   * @param parameter ArrayList[NameValuePair]
    * @param operation CloseableHttpResponse => T
    * @return Option[T]
    */
-  def withHttpPostResponse[T](uri: String, params: Map[String, String])(operation: CloseableHttpResponse => T): Option[T] = {
-    // to convert into List[BasicNameValuePair]
-    val list  = for ((name, value) <- params) yield new BasicNameValuePair(name, value)
-
-    // to convert into ArrayList[NameValuePair]
-    val pairs = list.foldLeft(new ArrayList[NameValuePair])((pairs, pair) => { pairs.add(pair); pairs })
-
+  def withHttpPostResponse[T](uri: JavaNetURI, parameter: ArrayList[NameValuePair])(operation: CloseableHttpResponse => T): Option[T] = {
     // to set Entity
-    val httppost = new HttpPost(URI(uri))
-    httppost.setEntity(new UrlEncodedFormEntity(pairs))
-
+    val httppost = new HttpPost(uri)
+    httppost.setEntity(new UrlEncodedFormEntity(parameter))
     withHttpResponse[T](httppost)(operation)
   }
 

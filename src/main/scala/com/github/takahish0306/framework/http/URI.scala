@@ -23,14 +23,4 @@ object URI {
     new JavaNetURI(uri)
   }
 
-  /**
-   * Unapply
-   *
-   * @param javaNetUrl java.net.URI
-   * @return Option[String]
-   */
-  def unapply(javaNetURI: JavaNetURI): Option[String] = {
-    Some(javaNetURI.toString)
-  }
-
 }
