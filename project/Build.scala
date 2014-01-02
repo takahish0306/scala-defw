@@ -43,7 +43,7 @@ object ScalaFramework extends Build {
       "org.apache.httpcomponents" % "httpclient" % "4.3.1",
       "postgresql" % "postgresql" % "9.1-901.jdbc4",
       "redis.clients" % "jedis" % "2.1.0",
-      "com.twitter" % "util-eval_2.10" % "6.5.0"
+      "com.twitter" % "util-eval_2.10" % "6.10.0"
     )
   )
 
