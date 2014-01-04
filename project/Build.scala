@@ -77,4 +77,20 @@ object ScalaFramework extends Build {
       )
     }
   ).dependsOn(scalaFrameworkFunctions)
+
+  lazy val scalaFrameworkWebsocket = Project(
+    id = "scala-framework-websocket",
+    base = file("./websocket"),
+    settings = Project.defaultSettings ++
+      baseSettings ++
+      ScalatraPlugin.scalatraWithJRebel
+  ).settings(
+    name := "scala-framework-websocket",
+    libraryDependencies ++= Seq(
+      "org.eclipse.jetty" % "jetty-webapp" % "8.1.12.v20130726" % "container",
+      "org.eclipse.jetty" % "jetty-websocket" % "8.1.12.v20130726",
+      "org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
+    )
+  ).dependsOn(scalaFrameworkFunctions)
+
 }
