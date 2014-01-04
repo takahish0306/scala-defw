@@ -1,4 +1,4 @@
-package com.github.takahish0306.framework.dao
+package com.github.takahish0306.framework.functions.dao
 
 import org.scalatest._
 

@@ -1,12 +1,12 @@
-package com.github.takahish0306.framework.config
+package com.github.takahish0306.framework.functions.config
 
 import org.scalatest._
-import com.github.takahish0306.framework.io.File
+import com.github.takahish0306.framework.functions.io.File
 
 class EvalTest extends FlatSpec with Eval {
 
-  "Eval.load" should "input from ./functions/src/test/resources/com/github/takahish0306/framework/config/Test.scala" in {
-    val file = File("./functions/src/test/resources/com/github/takahish0306/framework/config/Test.scala")
+  "Eval.load" should "input from ./functions/src/test/resources/com/github/takahish0306/framework/functions/config/Test.scala" in {
+    val file = File("./functions/src/test/resources/com/github/takahish0306/framework/functions/config/Test.scala")
     val config = load[Test](file)
     assert(config.get.value1 === "test1")
     assert(config.get.value2 === 1024)

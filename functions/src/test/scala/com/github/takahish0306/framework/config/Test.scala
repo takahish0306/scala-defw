@@ -1,4 +1,4 @@
-package com.github.takahish0306.framework.config
+package com.github.takahish0306.framework.functions.config
 
 trait Test {
   val value1: String

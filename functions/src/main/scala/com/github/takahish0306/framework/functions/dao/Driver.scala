@@ -7,10 +7,10 @@
  *
  */
 
-package com.github.takahish0306.framework.dao
+package com.github.takahish0306.framework.functions.dao
 
 import java.sql.{DriverManager, Connection, Statement, SQLException}
-import com.github.takahish0306.framework.log.Logger
+import com.github.takahish0306.framework.functions.log.Logger
 
 trait Driver extends Logger {
 

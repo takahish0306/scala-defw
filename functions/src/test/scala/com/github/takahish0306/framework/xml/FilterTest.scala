@@ -1,4 +1,4 @@
-package com.github.takahish0306.framework.xml
+package com.github.takahish0306.framework.functions.xml
 
 import org.scalatest._
 import scala.xml.XML

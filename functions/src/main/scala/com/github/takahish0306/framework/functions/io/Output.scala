@@ -7,11 +7,11 @@
  *
  */
 
-package com.github.takahish0306.framework.io
+package com.github.takahish0306.framework.functions.io
 
 import java.io.{File => JavaIoFile, FileOutputStream, IOException}
 import org.apache.commons.io.{IOUtils, FileUtils}
-import com.github.takahish0306.framework.log.Logger
+import com.github.takahish0306.framework.functions.log.Logger
 
 trait Output extends Logger {
 

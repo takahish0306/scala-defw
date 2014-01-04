@@ -7,7 +7,7 @@
  *
  */
 
-package com.github.takahish0306.framework.log
+package com.github.takahish0306.framework.functions.log
 
 import com.typesafe.scalalogging.slf4j.Logging
 

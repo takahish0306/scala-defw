@@ -1,4 +1,4 @@
-package com.github.takahish0306.framework.io
+package com.github.takahish0306.framework.functions.io
 
 import org.scalatest._
 import java.io.{File => FileObject}

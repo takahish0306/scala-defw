@@ -7,11 +7,11 @@
  *
  */
 
-package com.github.takahish0306.framework.config
+package com.github.takahish0306.framework.functions.config
 
 import java.io.{File => JavaIoFile}
 import com.twitter.util.{Eval => TwitterUtilEval}
-import com.github.takahish0306.framework.log.Logger
+import com.github.takahish0306.framework.functions.log.Logger
 
 trait Eval extends Logger {
 

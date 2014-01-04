@@ -7,7 +7,7 @@
  *
  */
 
-package com.github.takahish0306.framework.io
+package com.github.takahish0306.framework.functions.io
 
 import java.io.{File => JavaIoFile}
 import org.apache.commons.io.FilenameUtils

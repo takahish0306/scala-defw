@@ -1,12 +1,12 @@
-package com.github.takahish0306.framework.io
+package com.github.takahish0306.framework.functions.io
 
 import org.scalatest._
 import java.io._
 
 class OutputTest extends FlatSpec with Output {
-  "Output.withFileOutputStream" should "output to ./functions/src/test/resources/com/github/takahish0306/framework/io/output.txt" in {
+  "Output.withFileOutputStream" should "output to ./functions/src/test/resources/com/github/takahish0306/framework/functions/io/output.txt" in {
     var result: Boolean = false
-    val filepath = "./functions/src/test/resources/com/github/takahish0306/framework/io/output.txt"
+    val filepath = "./functions/src/test/resources/com/github/takahish0306/framework/functions/io/output.txt"
     val lines    = List("line1", "line2", "line3", "line4", "line5")
     withFileOutputStream[Unit](filepath) {
       stream => {

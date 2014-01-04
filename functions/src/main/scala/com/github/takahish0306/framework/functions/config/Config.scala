@@ -7,9 +7,9 @@
  *
  */
 
-package com.github.takahish0306.framework.config
+package com.github.takahish0306.framework.functions.config
 
-import com.github.takahish0306.framework.io.File
+import com.github.takahish0306.framework.functions.io.File
 
 object Config extends Eval {
 

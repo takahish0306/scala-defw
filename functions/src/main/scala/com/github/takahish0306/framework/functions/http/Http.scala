@@ -7,12 +7,12 @@
  *
  */
 
-package com.github.takahish0306.framework.http
+package com.github.takahish0306.framework.functions.http
 
 import java.io.{IOException, InputStream}
 import org.apache.commons.io.IOUtils
 import scala.io.Source
-import com.github.takahish0306.framework.log.Logger
+import com.github.takahish0306.framework.functions.log.Logger
 
 object Http extends Response with Logger {
 

@@ -1,4 +1,4 @@
-package com.github.takahish0306.framework.http
+package com.github.takahish0306.framework.functions.http
 
 import org.scalatest._
 

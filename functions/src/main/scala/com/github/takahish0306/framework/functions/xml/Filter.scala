@@ -7,7 +7,7 @@
  *
  */
 
-package com.github.takahish0306.framework.xml
+package com.github.takahish0306.framework.functions.xml
 
 import scala.xml.NodeSeq
 

@@ -7,10 +7,10 @@
  *
  */
 
-package com.github.takahish0306.framework.http
+package com.github.takahish0306.framework.functions.http
 
 import org.apache.http.impl.client.{HttpClients, CloseableHttpClient}
-import com.github.takahish0306.framework.log.Logger
+import com.github.takahish0306.framework.functions.log.Logger
 
 trait Client extends Logger {
 

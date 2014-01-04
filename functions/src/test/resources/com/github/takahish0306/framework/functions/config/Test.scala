@@ -1,4 +1,4 @@
-import com.github.takahish0306.framework.config.Test
+import com.github.takahish0306.framework.functions.config.Test
 
 new Test {
   val value1 = "test1"

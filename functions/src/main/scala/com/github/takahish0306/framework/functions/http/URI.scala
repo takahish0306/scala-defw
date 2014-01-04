@@ -7,7 +7,7 @@
  *
  */
 
-package com.github.takahish0306.framework.http
+package com.github.takahish0306.framework.functions.http
 
 import java.net.{URI => JavaNetURI}
 

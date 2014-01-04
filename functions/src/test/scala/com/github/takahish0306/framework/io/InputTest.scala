@@ -1,11 +1,11 @@
-package com.github.takahish0306.framework.io
+package com.github.takahish0306.framework.functions.io
 
 import org.scalatest._
 import java.io._
 
 class InputTest extends FlatSpec with Input {
-  "Input.withFileInputStream" should "input from ./functions/src/test/resources/com/github/takahish0306/framework/io/input.txt" in {
-    val filepath = "./functions/src/test/resources/com/github/takahish0306/framework/io/input.txt"
+  "Input.withFileInputStream" should "input from ./functions/src/test/resources/com/github/takahish0306/framework/functions/io/input.txt" in {
+    val filepath = "./functions/src/test/resources/com/github/takahish0306/framework/functions/io/input.txt"
     val result = withFileInputStream[String](filepath){
       stream => {
         val bufferedReader = new BufferedReader(new InputStreamReader(stream))

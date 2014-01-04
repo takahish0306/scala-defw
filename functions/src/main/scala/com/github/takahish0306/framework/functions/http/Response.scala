@@ -7,7 +7,7 @@
  *
  */
 
-package com.github.takahish0306.framework.http
+package com.github.takahish0306.framework.functions.http
 
 import java.io.IOException
 import java.net.{URI => JavaNetURI}
@@ -19,7 +19,7 @@ import org.apache.http.client.methods.{HttpRequestBase, HttpGet, HttpPost, Close
 import org.apache.http.client.entity.UrlEncodedFormEntity
 import org.apache.http.impl.client.{HttpClients, CloseableHttpClient}
 
-import com.github.takahish0306.framework.log.Logger
+import com.github.takahish0306.framework.functions.log.Logger
 
 trait Response extends Client with Logger {
 
