@@ -10,7 +10,7 @@ import ScalateKeys._
 object DefW extends Build {
   val Organization = "defw"
   val Name = "DefW"
-  val Version = "0.3.0"
+  val Version = "0.4.0"
   val ScalaVersion = "2.10.2"
  
   val baseSettings = Seq(
