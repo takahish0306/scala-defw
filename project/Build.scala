@@ -7,9 +7,9 @@ import org.scalatra.sbt.PluginKeys._
 import com.mojolly.scalate.ScalatePlugin._
 import ScalateKeys._
 
-object ScalaFramework extends Build {
-  val Organization = "com.github.takahish0306.framework"
-  val Name = "ScalaFramework"
+object DefW extends Build {
+  val Organization = "defw"
+  val Name = "DefW"
   val Version = "0.3.0"
   val ScalaVersion = "2.10.2"
  
@@ -27,14 +27,14 @@ object ScalaFramework extends Build {
     scalacOptions ++= Seq("-encoding", "utf8", "-unchecked", "-deprecation")
   )
 
-  lazy val scalaFrameworkFunctions = Project(
-    id = "scala-framework-functions",
-    base = file("./functions"),
+  lazy val defwUtil = Project(
+    id = "defw-util",
+    base = file("./util"),
     settings = Project.defaultSettings ++
       baseSettings ++
       assemblySettings
   ).settings(
-    name := "scala-framework-functions",
+    name := "defw-util",
     libraryDependencies ++= Seq(
       "org.slf4j" % "slf4j-api" % "1.7.5",
       "ch.qos.logback" % "logback-classic" % "1.0.13",
@@ -47,15 +47,15 @@ object ScalaFramework extends Build {
     )
   )
 
-  lazy val scalaFrameworkWebapp = Project(
-    id = "scala-framework-webapp",
+  lazy val defwWebapp = Project(
+    id = "defw-webapp",
     base = file("./webapp"),
     settings = Project.defaultSettings ++
       baseSettings ++
       ScalatraPlugin.scalatraWithJRebel ++
       scalateSettings
   ).settings(
-    name := "scala-framework-webapp",
+    name := "defw-webapp",
     libraryDependencies ++= Seq(
       "org.scalatra" %% "scalatra" % "2.2.2",
       "org.scalatra" %% "scalatra-scalate" % "2.2.2",
@@ -76,5 +76,5 @@ object ScalaFramework extends Build {
         )
       )
     }
-  ).dependsOn(scalaFrameworkFunctions)
+  ).dependsOn(defwUtil)
 }
