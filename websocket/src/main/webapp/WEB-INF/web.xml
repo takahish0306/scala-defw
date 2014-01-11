@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+
+  <servlet>
+    <servlet-name>WebSocket</servlet-name>
+    <servlet-class>com.github.takahish0306.framework.websocket.WebSocketServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>WebSocket</servlet-name>
+    <url-pattern>/*</url-pattern>
+  </servlet-mapping>
+
+</web-app>

@@ -1,2 +1,2 @@
-scala-framework
+scala-defw
 ===============
