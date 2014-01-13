@@ -4,11 +4,11 @@ import org.scalatest._
 import java.io._
 
 class OutputTest extends FlatSpec with Output {
-  "Output.withFileOutputStream" should "output to ./util/src/test/resources/defw/io/output.txt" in {
+  "Output.withFileOutputStream" should "output to ./utils/src/test/resources/defw/io/output.txt" in {
     var result: Boolean = false
-    val filepath = "./util/src/test/resources/defw/io/output.txt"
+    val file = File("./utils/src/test/resources/defw/io/output.txt")
     val lines    = List("line1", "line2", "line3", "line4", "line5")
-    withFileOutputStream[Unit](filepath) {
+    withFileOutputStream[Unit](file) {
       stream => {
         lines.foreach(line => {
           val bytes = (line + "\n").getBytes
@@ -25,8 +25,8 @@ class OutputTest extends FlatSpec with Output {
   // Error log output
   "Output.withFileOutputStream" should "throw exception opening /test/dummy.txt" in {
     var result: Boolean = false
-    val filepath = "/test/dummy.txt"
-    withFileOutputStream[Unit](filepath) {
+    val file = File("/test/dummy.txt")
+    withFileOutputStream[Unit](file) {
       stream => {}
     } match {
       case Some(v) => result = true

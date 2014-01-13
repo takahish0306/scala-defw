@@ -45,15 +45,4 @@ trait Output extends Logger {
     }
   }
 
-  /**
-   * To use output stream (overload)
-   *
-   * @param filepath String
-   * @param operation FileOutputStream => T
-   * @return Option[T]
-   */
-  def withFileOutputStream[T](filepath: String)(operation: FileOutputStream => T): Option[T] = {
-    withFileOutputStream[T](File(filepath))(operation)
-  }
-
 }

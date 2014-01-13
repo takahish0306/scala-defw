@@ -27,14 +27,14 @@ object DefW extends Build {
     scalacOptions ++= Seq("-encoding", "utf8", "-unchecked", "-deprecation")
   )
 
-  lazy val defwUtil = Project(
-    id = "defw-util",
-    base = file("./util"),
+  lazy val defwUtils = Project(
+    id = "defw-utils",
+    base = file("./utils"),
     settings = Project.defaultSettings ++
       baseSettings ++
       assemblySettings
   ).settings(
-    name := "defw-util",
+    name := "defw-utils",
     libraryDependencies ++= Seq(
       "org.slf4j" % "slf4j-api" % "1.7.5",
       "ch.qos.logback" % "logback-classic" % "1.0.13",
@@ -43,7 +43,8 @@ object DefW extends Build {
       "org.apache.httpcomponents" % "httpclient" % "4.3.1",
       "postgresql" % "postgresql" % "9.1-901.jdbc4",
       "redis.clients" % "jedis" % "2.1.0",
-      "com.twitter" % "util-eval_2.10" % "6.10.0"
+      "com.twitter" % "util-eval_2.10" % "6.10.0",
+      "net.liftweb" %% "lift-json" % "2.5.1"
     )
   )
 
@@ -76,7 +77,7 @@ object DefW extends Build {
         )
       )
     }
-  ).dependsOn(defwUtil)
+  ).dependsOn(defwUtils)
 
   lazy val defwWebsocket = Project(
     id = "defw-websocket",
@@ -91,5 +92,5 @@ object DefW extends Build {
       "org.eclipse.jetty" % "jetty-websocket" % "8.1.12.v20130726",
       "org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
     )
-  ).dependsOn(defwUtil)
+  ).dependsOn(defwUtils)
 }

@@ -47,15 +47,4 @@ trait Input extends Logger {
     }
   }
 
-  /**
-   * To use input stream (overload)
-   *
-   * @param filepath String
-   * @param operation FileInputStream => T
-   * @return Option[T]
-   */
-  def withFileInputStream[T](filepath: String)(operation: FileInputStream => T): Option[T] = {
-    withFileInputStream[T](File(filepath))(operation)
-  }
-
 }

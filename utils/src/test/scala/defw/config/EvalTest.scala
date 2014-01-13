@@ -5,8 +5,8 @@ import defw.io.File
 
 class EvalTest extends FlatSpec with Eval {
 
-  "Eval.load" should "input from ./util/src/test/resources/defw/config/Test.scala" in {
-    val file = File("./util/src/test/resources/defw/config/Test.scala")
+  "Eval.load" should "input from ./utils/src/test/resources/defw/config/Test.scala" in {
+    val file = File("./utils/src/test/resources/defw/config/Test.scala")
     val config = load[Test](file)
     assert(config.get.value1 === "test1")
     assert(config.get.value2 === 1024)
