@@ -12,9 +12,9 @@ package defw.http
 import java.io.{IOException, InputStream}
 import org.apache.commons.io.IOUtils
 import scala.io.Source
-import defw.log.Logger
+import defw.log.Log
 
-object Http extends Response with Logger {
+object Http extends Response {
 
   /**
    * To get HTTP/GET response
@@ -32,7 +32,7 @@ object Http extends Response with Logger {
           (status, Source.fromInputStream(stream).getLines.mkString)
         } catch {
           case e: Exception => {
-            logger.error("! Http.get failed. A problem occurred.")
+            Log.error("! Http.get failed. A problem occurred.")
             throw e
           }
         } finally {
@@ -59,7 +59,7 @@ object Http extends Response with Logger {
           (status, Source.fromInputStream(stream).getLines.mkString)
         } catch {
           case e: Exception => {
-            logger.error("! Http.post failed. A problem occurred.")
+            Log.error("! Http.post failed. A problem occurred.")
             throw e
           }
         } finally {

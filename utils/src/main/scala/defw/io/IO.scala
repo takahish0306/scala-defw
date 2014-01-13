@@ -10,9 +10,9 @@
 package defw.io
 
 import scala.io.Source
-import defw.log.Logger
+import defw.log.Log
 
-object IO extends Input with Output with Logger {
+object IO extends Input with Output {
 
   /**
    * To read string from file.
@@ -27,7 +27,7 @@ object IO extends Input with Output with Logger {
           Source.fromInputStream(stream).getLines.mkString
         } catch {
           case e: Exception => {
-            logger.error("! IO.read failed. A problem occurred.")
+            Log.error("! IO.read failed. A problem occurred.")
             throw e
           }
         }
@@ -50,7 +50,7 @@ object IO extends Input with Output with Logger {
           for (byte <- bytes) stream.write(byte)
         } catch {
           case e: Exception => {
-            logger.error("! IO.write failed. A problem occurred.")
+            Log.error("! IO.write failed. A problem occurred.")
             throw e
           }
         }

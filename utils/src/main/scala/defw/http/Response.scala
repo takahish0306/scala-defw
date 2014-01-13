@@ -19,9 +19,9 @@ import org.apache.http.client.methods.{HttpRequestBase, HttpGet, HttpPost, Close
 import org.apache.http.client.entity.UrlEncodedFormEntity
 import org.apache.http.impl.client.{HttpClients, CloseableHttpClient}
 
-import defw.log.Logger
+import defw.log.Log
 
-trait Response extends Client with Logger {
+trait Response extends Client {
 
   /**
    * To use http response
@@ -41,16 +41,16 @@ trait Response extends Client with Logger {
           operation(response)
         } catch {
           case e: ClientProtocolException => {
-            logger.error(exceptionMessage + " Http protocol error.")
+            Log.error(exceptionMessage + " Http protocol error.")
             throw e
 	  }
           case e: IOException => {
-            logger.error(exceptionMessage + " A problem or the connection was aborted.")
+            Log.error(exceptionMessage + " A problem or the connection was aborted.")
             throw e
           }
           case e: Exception => {
-            logger.error(exceptionMessage + " Unknown.")
-            logger.error("StackTrace:\n" + e.getStackTrace.mkString("\n"))
+            Log.error(exceptionMessage + " Unknown.")
+            Log.error("StackTrace:\n" + e.getStackTrace.mkString("\n"))
             throw e
           }
 	} finally {

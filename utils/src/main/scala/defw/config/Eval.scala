@@ -11,9 +11,9 @@ package defw.config
 
 import java.io.{File => JavaIoFile}
 import com.twitter.util.{Eval => TwitterUtilEval}
-import defw.log.Logger
+import defw.log.Log
 
-trait Eval extends Logger {
+trait Eval {
 
   /**
    * To get config from file by using twitter util eval
@@ -28,8 +28,8 @@ trait Eval extends Logger {
       Some(TwitterUtilEval[T](file))
     } catch {
       case e: Exception => {
-        logger.error(exceptionMessage + " A problem occured.")
-        logger.error("StackTrace:\n" + e.getStackTrace.mkString("\n"))
+        Log.error(exceptionMessage + " A problem occured.")
+        Log.error("StackTrace:\n" + e.getStackTrace.mkString("\n"))
         None
       }
     }

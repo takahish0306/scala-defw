@@ -10,9 +10,9 @@
 package defw.http
 
 import org.apache.http.impl.client.{HttpClients, CloseableHttpClient}
-import defw.log.Logger
+import defw.log.Log
 
-trait Client extends Logger {
+trait Client {
 
   /**
    * To use http client
@@ -29,7 +29,7 @@ trait Client extends Logger {
       Some(operation(client))
     } catch {
       case e: Exception => {
-        logger.error(exceptionMessage + " A problem occurred.")
+        Log.error(exceptionMessage + " A problem occurred.")
         None
       }
     } finally {

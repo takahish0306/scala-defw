@@ -10,9 +10,9 @@
 package defw.dao
 
 import java.sql.{DriverManager, Connection, Statement, SQLException}
-import defw.log.Logger
+import defw.log.Log
 
-trait Driver extends Logger {
+trait Driver {
 
   /**
    * To use connection
@@ -35,12 +35,12 @@ trait Driver extends Logger {
       Some(operation(connection))
     } catch {
       case e: SQLException => {
-        logger.error(exceptionMessage + " A database access error occurs.")
+        Log.error(exceptionMessage + " A database access error occurs.")
         None
       }
       case e: Exception => {
-        logger.error(exceptionMessage + " Unknown.")
-        logger.error("StackTrace:\n" + e.getStackTrace.mkString("\n"))
+        Log.error(exceptionMessage + " Unknown.")
+        Log.error("StackTrace:\n" + e.getStackTrace.mkString("\n"))
         None
       }
     } finally {
@@ -69,11 +69,11 @@ trait Driver extends Logger {
           operation(statement)
         } catch {
           case e: SQLException => {
-            logger.error(exceptionMessage + " A database access error occurs or this method is called on a closed connection.")
+            Log.error(exceptionMessage + " A database access error occurs or this method is called on a closed connection.")
             throw e
           }
           case e: Exception => {
-            logger.error(exceptionMessage + " Unknown.")
+            Log.error(exceptionMessage + " Unknown.")
             throw e
           }
         } finally {

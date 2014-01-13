@@ -11,9 +11,9 @@ package defw.io
 
 import java.io.{File => JavaIoFile, FileOutputStream, IOException}
 import org.apache.commons.io.{IOUtils, FileUtils}
-import defw.log.Logger
+import defw.log.Log
 
-trait Output extends Logger {
+trait Output {
 
   /**
    * To use output stream
@@ -30,14 +30,14 @@ trait Output extends Logger {
       Some(operation(stream))
     } catch {
       case e: IOException => {
-        logger.error(exceptionMessage 
+        Log.error(exceptionMessage 
             + " File object is a directory or cannot be read,"
             + " or a parent directory needs creating but that failed.")
         None
       }
       case e: Exception => {
-        logger.error(exceptionMessage + " Unknown.")
-        logger.error("StackTrace:\n" + e.getStackTrace.mkString("\n"))
+        Log.error(exceptionMessage + " Unknown.")
+        Log.error("StackTrace:\n" + e.getStackTrace.mkString("\n"))
         None
       }
     } finally {

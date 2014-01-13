@@ -11,9 +11,9 @@ package defw.io
 
 import java.io.{File => JavaIoFile, FileInputStream, FileNotFoundException, IOException}
 import org.apache.commons.io.{IOUtils, FileUtils}
-import defw.log.Logger
+import defw.log.Log
 
-trait Input extends Logger {
+trait Input {
 
   /**
    * To use input stream
@@ -30,16 +30,16 @@ trait Input extends Logger {
       Some(operation(stream))      
     } catch {
       case e: FileNotFoundException => {
-        logger.error(exceptionMessage + " File does not exist.")
+        Log.error(exceptionMessage + " File does not exist.")
         None
       }
       case e: IOException => {
-        logger.error(exceptionMessage + " File object is a directory or cannot be read.")
+        Log.error(exceptionMessage + " File object is a directory or cannot be read.")
         None
       }
       case e: Exception => {
-        logger.error(exceptionMessage + " Unknown.")
-        logger.error("StackTrace:\n" + e.getStackTrace.mkString("\n"))
+        Log.error(exceptionMessage + " Unknown.")
+        Log.error("StackTrace:\n" + e.getStackTrace.mkString("\n"))
         None
       }
     } finally {
